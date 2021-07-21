@@ -1,0 +1,20 @@
+
+
+.home-button {
+  height: 500px;
+  width: 250px;
+  margin: 10px;
+}
+
+.dino-home-button {
+ background-image: url(https://i.pinimg.com/originals/57/c7/87/57c787644bcb45d9922d1e019cb5cefd.jpg);
+ background-size: 200%;
+}
+
+.misc-home-button {
+  background-image: url(https://thumbs.dreamstime.com/t/set-fast-food-doodles-white-vector-illustration-perfect-menu-package-design-doodle-outline-foods-including-fish-meat-206800207.jpg);
+  background-size:100%;
+}
+
+@import '~bulma/bulma.sass'
+
