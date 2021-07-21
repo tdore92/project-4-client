@@ -1,0 +1,59 @@
+
+
+#GET ALL DINOS
+GET http://localhost:8000/api/dinosaurs/
+
+### GET SINGLE DINO
+@dinoId = 1
+GET http://localhost:8000/api/dinosaurs/{{dinoId}}
+
+### CREATE A DINO
+
+POST http://localhost:8000/api/dinosaurs/
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImV4cCI6MTYyNDg4ODY4M30.BauCwEpd9wgtsLKG315vKCP7X8weKvFxDluBl4vkeaM
+Content-Type: application/json
+
+{}
+
+### GET ALL MISCS
+
+GET http://localhost:8000/api/miscs/
+
+### GET SINGLE MISC
+@miscId = 1
+GET http://localhost:8000/api/miscs/{{miscId}}
+
+### register a user
+
+POST http://localhost:8000/api/auth/register/
+Content-Type: application/json
+
+{
+  "password": "theopass",
+  "password_confirmation": "theopass",
+  "username": "theo2",
+  "email": "theo2@email.com",
+  "profile_image": "image"
+  }
+
+### login a user
+
+POST http://localhost:8000/api/auth/login/
+Content-Type: application/json
+
+{
+  "password": "theopass",
+  "password_confirmation": "theopass",
+  "username": "theo2",
+  "email": "theo2@email.com",
+  "profile_image": "image"
+}
+
+### CREATE MISC COMMENT
+
+POST http://localhost:8000/api/miscs/1/comments/
+Content-Type: application/json
+
+{
+  "content": "Misc comment for one."
+}
