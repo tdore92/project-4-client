@@ -26,13 +26,11 @@
 <li>Bulma</li>
 <li>Material-UI</li>
 
-<h2>Approach Taken</h2>
-
-<h3>Planning</h3>
+<h3>Approach Taken</h3>
 
 <p>To begin with I pseudo-ed out the pages and features I wanted to include. Given the deadline, my recent exposure to Python and the fact it would be a solo venture I opted to keep it fairly simple to start with- home, index and show pages, with a ‘basket’ page similar to what my team and I attempted in project 2.</p>
 
-<img src=“” alt=“”/>
+<img src="https://i.imgur.com/HMD4rXz.png" alt="DPS Pseudo"/> 
 
 <h3>Backend</h3>
 
@@ -152,9 +150,8 @@ class Misc(models.Model):
     price = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(100)])
 
 ```
-<p>I then used Django Admin to quickly add some data sets.</p>
 
-Once the
+<p>I then used Django Admin to quickly add some data sets.</p>
 
 Login/register
 
@@ -162,9 +159,7 @@ Login/register
 
 <p>The index and show pages came together swiftly- on the home page, I opted for a simplistic, bulma-styled design.
 
-<img src=“” alt=“”/>
-
-
+<img src="https://i.imgur.com/6QsUY2I.png" alt="DPS Home"/>
 
 <p>The basket page followed the same idea that my colleague and I attempted in project 2- take an item, push it into a new array and then map it out on the desired page. Here, I found setting state solved our previous issue, and the desired items would now be displayed in the basket.</p>
 
@@ -212,9 +207,23 @@ const handleDelete = (e) => {
   }
 
 ```
+
 <p> There being two arrays, two counters and remove buttons were made- the deadline on the horizon, I’ve opted to come back to the resulting bugs later on, either to spread and combine the two arrays or refactor my code entirely.</p>
+
+<img src="" alt="Pending Bug Fix"/>
+
+<h3>Wins</h3>
+
+<p>Basket: In project 2 my team and I tried to create a similar feature that we didn't quite figure out how to implement in time, so it felt quite satisfying to succeed in a solo venture this time around.</p>
+
+<h3>Future Features</h3>
+
+<li>Q&A page that recommends a dinosaur for you.</li>
+<li>A 'related products' section for the show page of each dinosaur.</li>
 
 <h2>Lessons learned</h2>
 
-<li>Many of my lessons came from mistakes made in my planning, particularly my decision to use two models whereby one would have sufficed. The current solution would be to utilise a single model with expanded classes, which would reduce the problem solving required in the basket & related product apps especially.</li>
+<li>Many of my bugs came from mistakes made in my planning, particularly my decision to use two models whereby one would have sufficed. The current solution would be to utilise a single model with expanded classes, which would reduce the problem solving required in the basket & related product apps especially. In short, Keep It Simple Stupid!</li>
+
+<small>NOTE: This Readme will be updated over time as the bug fixes are implemented.</small>
 
