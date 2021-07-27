@@ -4,6 +4,8 @@
 
 <p>My final GA project was a solo venture, developed with a Python Django back-end and React front-end. I decided on Dinosaur Petshop- an online pet store where you could browse for and ‘buy’ different species of dinosaur, as well as related food and toys.</p>
 
+<a href="">Visit Dinosaur Petshop here.</a>
+
 <h2>Brief</h2>
 
 <li>Build a full-stack application by making your own backend and your own front-end.</li>
@@ -26,7 +28,7 @@
 <li>Bulma</li>
 <li>Material-UI</li>
 
-<h3>Approach Taken</h3>
+<h2>Approach Taken</h2>
 
 <p>To begin with I pseudo-ed out the pages and features I wanted to include. Given the deadline, my recent exposure to Python and the fact it would be a solo venture I opted to keep it fairly simple to start with- home, index and show pages, with a ‘basket’ page similar to what my team and I attempted in project 2.</p>
 
@@ -34,7 +36,7 @@
 
 <h3>Backend</h3>
 
-<p>I built my two models- Dinosaurs and Misc. The reasoning behind this was to give each model a different set of classes that could be accessed in various ways in React. </p>
+<p>I built my two models- Dinosaurs and Misc. The reasoning behind this was to give each model a different set of classes that could be accessed in various ways in React.</p>
 
 ```
 class Dinosaur(models.Model):
@@ -157,7 +159,7 @@ Login/register
 
 <h3>Frontend</h3>
 
-<p>The index and show pages came together swiftly- on the home page, I opted for a simplistic, bulma-styled design.
+<p>The index and show pages came together swiftly- on the home page, I opted for a simplistic, bulma-styled design.</p>
 
 <img src="https://i.imgur.com/6QsUY2I.png" alt="DPS Home"/>
 
@@ -208,22 +210,32 @@ const handleDelete = (e) => {
 
 ```
 
-<p> There being two arrays, two counters and remove buttons were made- the deadline on the horizon, I’ve opted to come back to the resulting bugs later on, either to spread and combine the two arrays or refactor my code entirely.</p>
+<p>There being two arrays, two counters and remove buttons were made- the deadline on the horizon, I’ve opted to come back to the resulting bugs later on, either to spread and combine the two arrays or refactor my code entirely.</p>
 
 <img src="" alt="Pending Bug Fix"/>
 
-<h3>Wins</h3>
+<h2>Wins</h2>
 
 <p>Basket: In project 2 my team and I tried to create a similar feature that we didn't quite figure out how to implement in time, so it felt quite satisfying to succeed in a solo venture this time around.</p>
 
-<h3>Future Features</h3>
+<h2>Challenges</h2>
+
+<p>Grappling with two separate models when creating the Basket and Related Product features brought more complex logic to the table than was required. Whilst I came up with a solution to the Basket component it's something I'm keen to go back to and rectify in the next few weeks.</p>
+
+<h2>Bugs</h2>
+
+<li>Image upload functionality to be fixed.</li>
+<li>401 error when Registering new user in Django.</li>
+<li>Delete function in Basket occasionally requires refreshing the page for changes to take effect.</li>
+
+<h2>Future Features</h2>
 
 <li>Q&A page that recommends a dinosaur for you.</li>
 <li>A 'related products' section for the show page of each dinosaur.</li>
 
 <h2>Lessons learned</h2>
 
-<li>Many of my bugs came from mistakes made in my planning, particularly my decision to use two models whereby one would have sufficed. The current solution would be to utilise a single model with expanded classes, which would reduce the problem solving required in the basket & related product apps especially. In short, Keep It Simple Stupid!</li>
-
-<small>NOTE: This Readme will be updated over time as the bug fixes are implemented.</small>
+<li>Come the deadline, I had far more bugs than I'd have liked. Many of them came from mistakes made in my planning, particularly my decision to use two models whereby one would have sufficed. The current solution would be to utilise a single model with expanded classes, which would reduce the problem solving required in the basket & related product apps especially. In short, Keep It Simple Stupid!</li>
+<br/>
+<p><small>NOTE: This Readme will be updated over time as the bug fixes and outstanding features are implemented.</small></p>
 
