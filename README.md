@@ -2,7 +2,7 @@
 
 <h2>Overview</h2>
 
-<p>My final GA project was a solo venture, developed with a Python Django back-end and React front-end. I decided on Dinosaur Petshop- an online pet store where you could browse for and ‘buy’ different species of dinosaur, as well as related food and toys.</p>
+<p>My final GA project was a solo venture, developed with a Python Django back-end and React front-end. I decided on Dinosaur Petshop - an online pet store where you could browse for and ‘buy’ different species of dinosaur, as well as related food and toys.</p>
 
 <a href="">Visit Dinosaur Petshop here.</a>
 
@@ -32,13 +32,13 @@
 
 <h2>Approach Taken</h2>
 
-<p>To begin with I pseudo-ed out the pages and features I wanted to include. Given the deadline, my recent exposure to Python and the fact it would be a solo venture I opted to keep it fairly simple to start with- home, index and show pages, with a ‘basket’ page similar to what my team and I attempted in project 2.</p>
+<p>To begin with I pseudo-coded the pages and features I wanted to include. Given the deadline, my recent exposure to Python and the fact it would be a solo venture I opted to keep it fairly simple to start with - home, index and show pages, with a ‘basket’ page similar to what my team and I attempted in project 2.</p>
 
 <img src="https://i.imgur.com/HMD4rXz.png" alt="DPS Pseudo"/> 
 
 <h3>Backend</h3>
 
-<p>I built my two models- Dinosaurs and Misc. The reasoning behind this was to give each model a different set of classes that could be accessed in various ways in React.</p>
+<p>I built my two models - Dinosaurs and Misc. The reasoning behind this was to give each model a different set of classes that could be accessed in various ways in React.</p>
 
 ```
 class Dinosaur(models.Model):
@@ -161,11 +161,11 @@ Login/register
 
 <h3>Frontend</h3>
 
-<p>The index and show pages came together swiftly- on the home page, I opted for a simplistic, bulma-styled design.</p>
+<p>The index and show pages came together swiftly - on the home page, I opted for a simplistic, bulma-styled design.</p>
 
 <img src="https://i.imgur.com/6QsUY2I.png" alt="DPS Home"/>
 
-<p>The basket page followed the same idea that my colleague and I attempted in project 2- take an item, push it into a new array and then map it out on the desired page. Here, I found setting state solved our previous issue, and the desired items would now be displayed in the basket.</p>
+<p>The basket page followed the same idea that my colleague and I attempted in project 2 - take an item, push it into a new array and then map it out on the desired page. Here, I found setting state solved our previous issue, and the desired items would now be displayed in the basket.</p>
 
 ```
 const handleClick = (e) => {
@@ -212,7 +212,7 @@ const handleDelete = (e) => {
 
 ```
 
-<p>There being two arrays, two counters and remove buttons were made- the deadline on the horizon, I’ve opted to come back to the resulting bugs later on, either to spread and combine the two arrays or refactor my code entirely.</p>
+<p>There being two arrays, two counters and remove buttons were made - the deadline on the horizon, I’ve opted to come back to the resulting bugs later on, either to spread and combine the two arrays or refactor my code entirely.</p>
 
 <img src="" alt="Pending Bug Fix"/>
 
@@ -237,7 +237,7 @@ const handleDelete = (e) => {
 
 <h2>Lessons learned</h2>
 
-<li>Come the deadline, I had far more bugs than I'd have liked. Many of them came from mistakes made in my planning, particularly my decision to use two models whereby one would have sufficed. The current solution would be to utilise a single model with expanded classes, which would reduce the problem solving required in the basket & related product apps especially. In short, Keep It Simple Stupid!</li>
+<li>Come the deadline, I had far more bugs than I would have liked. Many of them came from mistakes made in my planning, particularly my decision to use two models whereby one would have sufficed. The current solution would be to utilise a single model with expanded classes, which would reduce the problem solving required in the basket & related product apps especially. In short, Keep It Simple Stupid!</li>
 <br/>
 <p><small>NOTE: This Readme will be updated over time as the bug fixes and outstanding features are implemented.</small></p>
 
