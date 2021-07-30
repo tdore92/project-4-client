@@ -157,8 +157,6 @@ class Misc(models.Model):
 
 <p>I then used Django Admin to quickly add some data sets.</p>
 
-Login/register
-
 <h3>Frontend</h3>
 
 <p>The index and show pages came together swiftly - on the home page, I opted for a simplistic, bulma-styled design.</p>
