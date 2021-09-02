@@ -10,14 +10,18 @@ function Register() {
     email: '',
     password: '',
     passwordConfirmation: '',
+    profileImage: '',
   })
+
+  console.log('formdata', formdata)
 
   const handleSubmit = async event => {
     event.preventDefault()
 
     try {
       await registerUser(formdata)
-      history.push('/login')
+      history.push('/Login')
+      console.log('Registration successful!')
     } catch (err) {
       console.log(err.response.data)
     }
@@ -25,6 +29,13 @@ function Register() {
 
   return (
     <section className="section">
+      <section className="section">
+        <div className="container">
+          <div className="columns">
+            <p className="column is-full has-text-centered">Create an account with Dinosaur PetShop&copy; to access the exclusive ability to post ads for any dinosaurs or related items you wish to sell!</p>
+          </div>
+        </div>
+      </section>
       <div className="container box">
         <div className="columns">
           <form className="column is-half is-offset-one-quarter" onSubmit={handleSubmit}>
@@ -68,6 +79,19 @@ function Register() {
                       type="password"
                       value={formdata.passwordConfirmation} />
                   </div>
+
+                  <div className="field">
+                    <label className="label">Profile Image</label>
+                    <div className="control">
+                      <select className="control" placeholder="Is your product small, medium or large?" onChange={handleChange} name="profileImage" value={formdata.profileImage}>
+                        <option>T-Rex</option>
+                        <option>Triceratops</option>
+                        <option>Pteranodon</option>
+                      </select>
+
+                    </div>
+                  </div>
+
                   <div>
                     <button type="submit">Register</button>
                   </div>

@@ -10,37 +10,17 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 
 function Basket() {
 
-
-  //const basketItemArray = 
-  //console.log(basketItemArray)
-
-
   const [open, setOpen] = React.useState(false)
-  // dino basket //
-  const [basketItems, setBasketItems] = React.useState(() => JSON.parse(window.localStorage.getItem('dinos')))
-  // misc basket //
-  const [basketMiscItems] = React.useState(() => JSON.parse(window.localStorage.getItem('miscs')))
+  // item basket //
+  const [basketItems, setBasketItems] = React.useState(() => JSON.parse(window.localStorage.getItem('items')))
 
-  const totalDinoPrice = basketItems.reduce((runningTotal, item) => {
+  const totalPrice = basketItems.reduce((runningTotal, item) => {
     return runningTotal + item.price
   }, 0)
-
-  const totalMiscPrice = basketMiscItems.reduce((runningTotal, item) => {
-    return runningTotal + item.price
-    
-  }, 0)
-  console.log(totalMiscPrice)
-
 
   const handleDelete = (e) => {
     const newBasketItems = basketItems.filter((_, index) => index !== Number(e.target.value))
-    localStorage.setItem('dinos', JSON.stringify(newBasketItems))
-    setBasketItems(newBasketItems)
-  }
-
-  const handleMiscsDelete = (e) => {
-    const newBasketItems = basketMiscItems.filter((_, index) => index !== Number(e.target.value))
-    localStorage.setItem('miscs', JSON.stringify(newBasketItems))
+    localStorage.setItem('items', JSON.stringify(newBasketItems))
     setBasketItems(newBasketItems)
   }
 
@@ -68,24 +48,6 @@ function Basket() {
                 </div>
               </div>
             </div>
-
-            <hr />
-          </div>
-          )
-        ) : (
-          <p>...loading</p>
-        )}
-        {basketMiscItems ? (
-          basketMiscItems.map((item, index) => <div className="container"
-            key={Math.random()}>
-            <div>
-              <div>
-
-                <p>{item.name} | {item.misctype}</p>
-                <p>${item.price}</p>
-                <button className="is-pulled-right" onClick={handleMiscsDelete} value={index}>Remove item</button>
-              </div>
-            </div>
             <hr />
           </div>
           )
@@ -93,7 +55,7 @@ function Basket() {
           <p>...loading</p>
         )}
       </section>
-      <p>Total:${totalDinoPrice}</p>
+      <p>Total:${totalPrice}</p>
       <button onClick={handleClickOpen}>Checkout</button>
       <Dialog
         open={open}
@@ -101,7 +63,7 @@ function Basket() {
         <DialogTitle>{'Error 404'}</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Dinosaurs aren&apos;t real.
+            Dinosaurs don&apos;t exist anymore.
           </DialogContentText>
         </DialogContent>
         <DialogActions>

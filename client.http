@@ -1,27 +1,19 @@
 
 
-#GET ALL DINOS
-GET http://localhost:8000/api/dinosaurs/
+#GET ALL ITEM
+GET http://localhost:8000/api/items/
 
-### GET SINGLE DINO
-@dinoId = 1
-GET http://localhost:8000/api/dinosaurs/{{dinoId}}
+### GET SINGLE ITEM
+@itemId = 1
+GET http://localhost:8000/api/items/{{itemId}}
 
 ### CREATE A DINO
 
-POST http://localhost:8000/api/dinosaurs/
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImV4cCI6MTYyNDg4ODY4M30.BauCwEpd9wgtsLKG315vKCP7X8weKvFxDluBl4vkeaM
+POST http://localhost:8000/api/items/
+Authorization: Bearer
 Content-Type: application/json
 
 {}
-
-### GET ALL MISCS
-
-GET http://localhost:8000/api/miscs/
-
-### GET SINGLE MISC
-@miscId = 1
-GET http://localhost:8000/api/miscs/{{miscId}}
 
 ### register a user
 
@@ -30,11 +22,11 @@ Content-Type: application/json
 
 {
   "password": "theopass",
-  "password_confirmation": "theopass",
-  "username": "theo2",
-  "email": "theo2@email.com",
-  "profile_image": "image"
-  }
+  "passwordConfirmation": "theopass",
+  "username": "theo3",
+  "email": "theo@email.com",
+  "profileImage": "image.jpg"
+}
 
 ### login a user
 
@@ -42,16 +34,13 @@ POST http://localhost:8000/api/auth/login/
 Content-Type: application/json
 
 {
-  "password": "theopass",
-  "password_confirmation": "theopass",
-  "username": "theo2",
-  "email": "theo2@email.com",
-  "profile_image": "image"
+  "email": "theo@email.com",
+  "password": "theopass"
 }
 
 ### CREATE MISC COMMENT
 
-POST http://localhost:8000/api/miscs/1/comments/
+POST http://localhost:8000/api/items/1/comments/
 Content-Type: application/json
 
 {

@@ -9,26 +9,18 @@ function headers() {
   }
 }
 
-// Dino and Misc requests
+// Item requests
 
-export function getAllDinos() {
-  return axios.get(`${baseUrl}/dinosaurs`)
+export function getAllItems() {
+  return axios.get(`${baseUrl}/items/`)
 }
 
-export function getSingleDino(id) {
-  return axios.get(`${baseUrl}/dinosaurs/${id}`)
-}
-
-export function getAllMiscs() {
-  return axios.get(`${baseUrl}/miscs`)
-}
-
-export function getSingleMisc(id) {
-  return axios.get(`${baseUrl}/miscs/${id}`)
+export function getSingleItem(id) {
+  return axios.get(`${baseUrl}/items/${id}`)
 }
 
 export function createDino(formdata) {
-  return axios.post(`${baseUrl}/dinosaurs/`, formdata, {
+  return axios.post(`${baseUrl}/items/`, formdata, {
     headers: { Authorization: `Bearer ${getToken()}` },
   })
 }
@@ -36,23 +28,23 @@ export function createDino(formdata) {
 // Authorization Requests //
 
 export function registerUser(formdata) {
-  return axios.post(`${baseUrl}/register`, formdata)
+  return axios.post(`${baseUrl}/auth/register/`, formdata)
 }
 
 export function loginUser(formdata) {
-  return axios.post(`${baseUrl}/login`, formdata)
+  return axios.post(`${baseUrl}/auth/login/`, formdata)
 }
 
 // Misc Comments //
 
 export function createComment(id, formdata) {
-  return axios.post(`${baseUrl}/miscs/${id}`, formdata, headers())
+  return axios.post(`${baseUrl}/items/${id}`, formdata, headers())
 }
 
 export function getComments(id, formdata) {
-  return axios.get(`${baseUrl}/miscs/${id}`, formdata, headers())
+  return axios.get(`${baseUrl}/items/${id}`, formdata, headers())
 }
 
 export function submitComment(id, formdata) {
-  return axios.post(`${baseUrl}/miscs/${id}/comments`, formdata, headers())
+  return axios.post(`${baseUrl}/items/${id}/comments/`, formdata, headers())
 }

@@ -4,7 +4,7 @@ function DinoCard({ id, name, size, type, image }) {
   return (
 
     <div className="column box is-15">
-      <Link to={`/dinosaurs/${id}`}>
+      <Link to={`/items/${id}`}>
         <div className="column ">
           <div className="">
             <div className="has-text-black is-size-5">{name}</div>

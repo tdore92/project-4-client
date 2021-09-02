@@ -1,19 +1,19 @@
 import React from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import { getSingleDino } from '../../lib/api'
+import { getSingleItem } from '../../lib/api'
 
 function DinoShow() {
   let basketItemArray = []
   const history = useHistory()
-  const [dino, setDino] = React.useState(null)
+  const [item, setItem] = React.useState(null)
   const { id } = useParams()
 
   React.useEffect(() => {
     console.log('Dino show is mounted.')
     const getData = async () => {
       try {
-        const { data } = await getSingleDino(id)
-        setDino(data)
+        const { data } = await getSingleItem(id)
+        setItem(data)
       } catch (err) {
         console.log(err)
       }
@@ -24,12 +24,12 @@ function DinoShow() {
   const handleClick = (e) => {
     console.log(e.target.value)
     const basketItem = JSON.parse(window.localStorage.getItem('dinos')) || []
-    console.log(dino)
-    basketItemArray = [...basketItemArray, dino]
-    basketItem.push(dino)
-    localStorage.setItem('dinos', JSON.stringify(basketItem))
-    console.log(basketItemArray)
-    history.push('/dinosaurs')
+    console.log(item)
+    basketItemArray = [...basketItemArray, item]
+    basketItem.push(item)
+    localStorage.setItem('items', JSON.stringify(basketItem))
+    console.log(basketItemArray, 'basket')
+    history.push('/')
   }
 
   return (
@@ -37,19 +37,19 @@ function DinoShow() {
       <div className="container">
         <div className="columns is-vcentered">
 
-          {dino ? (
+          {item ? (
             <section className="section">
               <div className="column is-8">
-                <h2>{dino.name} | {dino.size} {dino.type} <h2 className="is-pulled-right">${dino.price}</h2></h2>
+                <h2>{item.name} | {item.size} {item.type} <h2 className="is-pulled-right">${item.price}</h2></h2>
                 <hr/>
                 <div>
                 </div>
                 <div>
-                  <p>{dino.description}</p>
+                  <p>{item.description}</p>
                 </div>
               </div>
               <div className="column is-8">
-                <img src={dino.image} alt={dino.name} />
+                <img src={item.image} alt={item.name} />
               </div>
               <button type="submit" value="id" onClick={handleClick}>Add to Basket</button>
               

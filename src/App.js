@@ -26,12 +26,13 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/dinosaurs/new" component={DinoNew} />  
-        <Route path="/miscs/:id" component={MiscShow} />
+        
         <Route path="/dinosaurs/:id" component={DinoShow} />
+        <Route path="/items/:id" component={MiscShow} />
         <Route path="/dinosaurs" component={DinoIndex} />             
         <Route path="/miscs" component={MiscIndex} />
-        <Route path="/Register" component={Register} />
-        <Route path="/Login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path="/login" component={Login} />
         <Route path="/Basket" component={Basket} />
         
       </Switch>

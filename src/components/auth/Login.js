@@ -18,7 +18,8 @@ function Login() {
     try {
       const { data } = await loginUser(formdata)
       setToken(data.token)
-      history.push('/dinosaurs')
+      history.push('/')
+      console.log('Login Successful')
     } catch (err) {
       console.log(err)
     }
