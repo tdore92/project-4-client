@@ -1,21 +1,21 @@
 import React from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import { getSingleMisc } from '../../lib/api'
+import { getSingleItem } from '../../lib/api'
 import Comments from './MiscComment'
 
 
 function MiscShow() {
   let basketItemArray = []
   const history = useHistory()
-  const [misc, setMisc] = React.useState(null)
+  const [item, setItem] = React.useState(null)
   const { id } = useParams()
 
   React.useEffect(() => {
-    console.log('Mounted show page')
+    console.log('Misc show page is mounted.')
     const getData = async () => {
       try {
-        const { data } = await getSingleMisc(id)
-        setMisc(data)
+        const { data } = await getSingleItem(id)
+        setItem(data)
       } catch (err) {
         console.log(err)
       }
@@ -25,13 +25,13 @@ function MiscShow() {
 
   const handleClick = (e) => {
     console.log(e.target.value)
-    const basketItemMisc = JSON.parse(window.localStorage.getItem('miscs')) || []
-    console.log(misc)
-    basketItemArray = [...basketItemArray, misc]
-    basketItemMisc.push(misc)
-    localStorage.setItem('miscs', JSON.stringify(basketItemMisc))
+    const basketItem = JSON.parse(window.localStorage.getItem('items')) || []
+    console.log(item)
+    basketItemArray = [...basketItemArray, item]
+    basketItem.push(item)
+    localStorage.setItem('items', JSON.stringify(basketItem))
     console.log(basketItemArray)
-    history.push('/miscs')
+    history.push('/')
   }
 
   return (
@@ -39,16 +39,16 @@ function MiscShow() {
       <div className="container">
         <div className="columns is-vcentered">
 
-          {misc ? (
+          {item ? (
             <section className="section">
               <div className="column is-8">
-                <h2>{misc.name} | {misc.misctype} <h2 className="is-pulled-right">${misc.price}</h2></h2>
+                <h2>{item.name} | {item.size} <h2 className="is-pulled-right">${item.price}</h2></h2>
                 <hr/>
-                <p>{misc.description}</p>
+                <p>{item.description}</p>
                 <div className="column is-8">
-                  <img src={misc.image}></img>
+                  <img src={item.image}></img>
                 </div>
-                <button type="sumbit" value="id" onClick={handleClick}>Add to Basket</button>
+                <button type="sumbit" value="id" onClick={handleClick}>Add Item to Basket</button>
                 <hr/>
                 <Comments />
               </div>

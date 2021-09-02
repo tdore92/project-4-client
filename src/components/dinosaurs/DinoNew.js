@@ -2,18 +2,18 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import useForm from '../../hooks/useForm'
 import { createDino } from '../../lib/api'
-import ImageUpload from '../../hooks/imageUpload'
 
 function DinoNew() {
   const history = useHistory()
 
-  const { formdata, handleChange, handleImageUpload } = useForm({
+  const { formdata, handleChange } = useForm({
     name: '',
     type: '',
+    diet: '',
     size: '',
     description: '',
-    image: '',
     price: '',
+    image: '',
   })
 
   const handleSubmit = async (e) => {
@@ -52,8 +52,16 @@ function DinoNew() {
               </div>
             </div>
             <div className="field">
-              <label className="label">Type</label>
-              <select className="input" placeholder="Carnivore, Herbivore or Piscivore?" onChange={handleChange} name="type">
+              <label className="label">Product Type</label>
+              <select className="input" placeholder="Dinosaur, Food or Toy?" onChange={handleChange} name="type">
+                <option>Dinosaur</option>
+                <option>Food</option>
+                <option>Toy</option>
+              </select>
+            </div>
+            <div className="field">
+              <label className="label">Diet</label>
+              <select className="input" placeholder="Dinosaur, Food or Toy?" onChange={handleChange} name="diet">
                 <option>Carnivore</option>
                 <option>Herbivore</option>
                 <option>Piscivore</option>
@@ -61,7 +69,7 @@ function DinoNew() {
             </div>
             <div className="field">
               <label className="label">Size</label>
-              <select className="input" placeholder="Is your dinosaur small, medium or large?" onChange={handleChange} name="size">
+              <select className="input" placeholder="Is your product small, medium or large?" onChange={handleChange} name="size">
                 <option>Small</option>
                 <option>Medium</option>
                 <option>Large</option>
@@ -74,7 +82,7 @@ function DinoNew() {
             </div>
             <div className="field">
               <label className="label">Post a Photo!</label>
-              <ImageUpload onUpload={handleImageUpload} />
+              <textarea className="textarea" placeholder="Copy your URL into here!" onChange={handleChange} name="image" />
             </div>
             <div className="field">
               <label className="label">Price</label>
