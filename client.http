@@ -5,7 +5,7 @@ GET http://localhost:8000/api/items/
 
 ### GET SINGLE ITEM
 @itemId = 1
-GET http://localhost:8000/api/items/{{itemId}}
+GET http://localhost:8000/api/items/{{itemId}}/
 
 ### CREATE A DINO
 
