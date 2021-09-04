@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { getToken } from './auth'
-
-const baseUrl = '/api'
+import { baseUrl } from '../config'
 
 function headers() {
   return {
@@ -16,7 +15,7 @@ export function getAllItems() {
 }
 
 export function getSingleItem(id) {
-  return axios.get(`${baseUrl}/items/${id}`)
+  return axios.get(`${baseUrl}/items/${id}/`)
 }
 
 export function createDino(formdata) {
