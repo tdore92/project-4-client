@@ -2,7 +2,7 @@
 
 <h2>Overview</h2>
 
-<p>My final GA project was a solo venture, developed with a Python Django back-end and React front-end. I decided on Dinosaur Petshop - an online pet store where you could browse for and ‘buy’ different species of dinosaur, as well as related food and toys.</p>
+<p>My final GA project was a solo venture, developed with a Python Django back-end and React front-end. I decided on Dinosaur PetShop - an online pet store where you could browse for and ‘buy’ different species of dinosaur, as well as related food and toys.</p>
 
 <a href="">Visit Dinosaur Petshop here.</a>
 
