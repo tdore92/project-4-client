@@ -1,12 +1,20 @@
 import React from 'react'
-import { useHistory, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { getSingleItem } from '../../lib/api'
 import Comments from './MiscComment'
 
+import Button from '@material-ui/core/Button'
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogContentText from '@material-ui/core/DialogContentText'
+import DialogTitle from '@material-ui/core/DialogTitle'
+
 
 function MiscShow() {
+
+  const [open, setOpen] = React.useState(false)
   let basketItemArray = []
-  const history = useHistory()
   const [item, setItem] = React.useState(null)
   const { id } = useParams()
 
@@ -31,7 +39,11 @@ function MiscShow() {
     basketItem.push(item)
     localStorage.setItem('items', JSON.stringify(basketItem))
     console.log(basketItemArray)
-    history.push('/Basket')
+    setOpen(true)
+  }
+
+  const handleClose = () => {
+    setOpen(false)
   }
 
   return (
@@ -46,19 +58,34 @@ function MiscShow() {
                 <img src={item.image}></img>
               </div>
               <div className="column is-4">
-                
+
                 <div>
                   <div><div className="is-size-3">{item.name}</div>{item.size} Sized {item.type}<div className="is-pulled-right">${item.price}</div></div>
                   <hr />
                   <p>{item.description}</p>
                   <button className="is-pulled-right" type="submit" value="id" onClick={handleClick}>Add Item to Basket</button>
+                  <Dialog
+                    open={open}
+                    onClose={handleClose}>
+                    <DialogTitle></DialogTitle>
+                    <DialogContent>
+                      <DialogContentText>
+                        Item has been added to your basket.
+                      </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                      <Button onClick={handleClose}>
+                        Ok
+                      </Button>
+                    </DialogActions>
+                  </Dialog>
                 </div>
-                <hr/>
+                <hr />
                 <div>Comments</div>
                 <div className="is-pulled-right">
                   <Comments />
                 </div>
-                
+
               </div>
             </div>
           </div>
