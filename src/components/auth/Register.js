@@ -5,7 +5,7 @@ import { useHistory, Link } from 'react-router-dom'
 
 function Register() {
   const history = useHistory()
-  const { formdata, handleChange } = useForm({
+  const { formdata, formErrors, handleChange, setFormErrors } = useForm({
     username: '',
     email: '',
     password: '',
@@ -23,6 +23,7 @@ function Register() {
       history.push('/Login')
       console.log('Registration successful!')
     } catch (err) {
+      setFormErrors(err.response.data)
       console.log(err.response.data)
     }
   }
@@ -48,6 +49,7 @@ function Register() {
                   name="username"
                   value={formdata.username} />
               </div>
+              {formErrors.username && <p className='help is-danger'>Username is required!</p>}
             </div>
             <div className="field">
 
@@ -59,6 +61,7 @@ function Register() {
                   name="email"
                   value={formdata.email} />
               </div>
+              {formErrors.email && <p className= 'help is-danger'>Email is required!</p>}
               <div className="field">
                 <label className="label">Password</label>
                 <div className="control">
@@ -69,6 +72,7 @@ function Register() {
                     type="password"
                     value={formdata.password} />
                 </div>
+                {formErrors.password && <p className='help is-danger'>Password is too short!</p>}
                 <div className="field">
                   <label className="label">Password Confirmation</label>
                   <div className="control">
@@ -79,6 +83,7 @@ function Register() {
                       type="password"
                       value={formdata.passwordConfirmation} />
                   </div>
+                  {formErrors.passwordConfirmation && <p className='help is-danger'>Does not match password!</p>}
 
                   <div className="field">
                     <label className="label">Profile Image</label>
@@ -88,8 +93,8 @@ function Register() {
                         <option>Triceratops</option>
                         <option>Pteranodon</option>
                       </select>
-
                     </div>
+                    {formErrors.profileImage && <p className='help is-danger'>Select a profile image!</p>}
                   </div>
 
                   <div>

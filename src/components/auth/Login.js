@@ -7,6 +7,7 @@ import { setToken } from '../../lib/auth'
 
 function Login() {
   const history = useHistory()
+  const [isError, setIsError] = React.useState(false)
   const { formdata, handleChange } = useForm({
     email: '',
     password: '',
@@ -22,6 +23,7 @@ function Login() {
       console.log('Login Successful')
     } catch (err) {
       console.log(err)
+      setIsError(true)
     }
   }
 
@@ -49,8 +51,8 @@ function Login() {
                   name="password"
                   type="password"
                   value={formdata.password} />
-              </div>
-            </div>
+              </div>              
+            </div>{isError && <p className='help is-danger'>Incorrect details. Please try again!</p>}
             <div>
               <button type="submit">Log In</button>
             </div>

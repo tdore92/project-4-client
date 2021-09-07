@@ -47,11 +47,15 @@ function ItemIndex() {
 
   return (
     <section>
+      <div className="hero hero-image-misc">
+        <img className="hero-body" src="https://i.imgur.com/NGn013s.jpg" alt="dino-riding"></img>
+      </div>
+
       <section className="section">
         <div className="container">
           <div className="columns">
 
-            <p className="column is-full has-text-centered"><h1 className="is-size-3">Food and Toys</h1><hr />Make no mistake, a dinosaur is a lot of work. Thankfully, Dinosaur PetShop&copy; is here to supply their customers with all the food and entertainment these frankly terrifying creatures could want. Our products cater to every size and species of dinosaur currently available on the market. </p>
+            <p className="column is-full has-text-centered"><h1 className="is-size-1">Food and Toys</h1><hr />Make no mistake, a dinosaur is a lot of work. Thankfully, Dinosaur PetShop&copy; is here to supply their customers with all the food and entertainment these frankly terrifying creatures could want. Our products cater to every size and species of dinosaur currently available on the market. </p>
           </div>
         </div>
       </section>
@@ -61,7 +65,7 @@ function ItemIndex() {
             {miscFilteredItems ? (
               miscFilteredItems.map(item => <div className="column is-one-third" key={item.id}><MiscCard {...item} /></div>)
             ) : (
-              <p>...loading</p>
+              <p className="is-centered">...loading</p>
             )}
           </div>
         </div>

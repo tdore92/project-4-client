@@ -16,5 +16,24 @@
   background-size:100%;
 }
 
+.hero-image-misc {
+  height: 450px;
+  overflow: hidden;
+  margin-top: 45px; 
+}
+
+.hero-image-dino {
+  height: 500px;
+  overflow: hidden;
+  
+}
+
+.hero-image-misc img {
+  margin: -230px 0px 0px 0px;
+  transform: scale();
+}
+
+
+
 @import '~bulma/bulma.sass'
 

@@ -31,34 +31,44 @@ function MiscShow() {
     basketItem.push(item)
     localStorage.setItem('items', JSON.stringify(basketItem))
     console.log(basketItemArray)
-    history.push('/')
+    history.push('/Basket')
   }
 
   return (
-    <section>
-      <div className="container">
-        <div className="columns is-vcentered">
-
-          {item ? (
-            <section className="section">
-              <div className="column is-8">
-                <h2>{item.name} | {item.size} <h2 className="is-pulled-right">${item.price}</h2></h2>
-                <hr/>
-                <p>{item.description}</p>
-                <div className="column is-8">
-                  <img src={item.image}></img>
-                </div>
-                <button type="sumbit" value="id" onClick={handleClick}>Add Item to Basket</button>
-                <hr/>
-                <Comments />
+    <>
+      {item ? (
+        <section className="">
+          <div className="">
+            <div className="hero"></div>
+            <div className="hero-body"></div>
+            <div className="columns is-centered">
+              <div className="column is-5 box">
+                <img src={item.image}></img>
               </div>
-            </section>
-          ) : (
-            <p>...loading show</p>
-          )}
-        </div>
-      </div>
-    </section>
+              <div className="column is-4">
+                
+                <div>
+                  <div><div className="is-size-3">{item.name}</div>{item.size} Sized {item.type}<div className="is-pulled-right">${item.price}</div></div>
+                  <hr />
+                  <p>{item.description}</p>
+                  <button className="is-pulled-right" type="submit" value="id" onClick={handleClick}>Add Item to Basket</button>
+                </div>
+                <hr/>
+                <div>Comments</div>
+                <div className="is-pulled-right">
+                  <Comments />
+                </div>
+                
+              </div>
+            </div>
+          </div>
+
+
+        </section>
+      ) : (
+        <p className="is-centered">...loading</p>
+      )}
+    </>
   )
 
 }

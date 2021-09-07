@@ -5,7 +5,7 @@ import ItemCard from './DinoCard'
 
 function DinoIndex() {
   const [items, setItems] = React.useState(null)
-  
+
 
   React.useEffect(() => {
     console.log('Dino Index has mounted')
@@ -48,13 +48,15 @@ function DinoIndex() {
 
   return (
     <section>
-
-
+      <div className="hero hero-image-dino">
+        <img className="hero-body" src="https://i.imgur.com/eDvHNjC.jpg" alt="dino-watching" />
+      </div>
+      
       <section className="section">
         <div className="container">
           <div className="columns">
 
-            <p className="column is-full has-text-centered"><h1 className="is-size-3">Dinosaurs</h1><hr />Thanks to several technological breakthroughs and one or two ethically questionable experiments, dinosaurs are now available to take home and domesticate! Browse through our exclusive Dinosaur PetShop&copy; roster and find the scaly companion for you.</p>
+            <p className="column is-full has-text-centered"><h1 className="is-size-1">Dinosaurs</h1><hr />Thanks to several technological breakthroughs and one or two ethically questionable experiments, dinosaurs are now available to take home and domesticate! Browse through our exclusive Dinosaur PetShop&copy; roster and find the scaly companion for you.</p>
           </div>
         </div>
       </section>
