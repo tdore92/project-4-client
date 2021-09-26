@@ -41,8 +41,8 @@ function Comments() {
           {comments.map(comment => {
             return <p key={comment.id}>{comment.content}</p>
           })}
-          <textarea className="input is-small" value={text} onChange={handleChange} placeholder="Tell us your thoughts..." name="comments" />
-          <button>Add Comment</button>
+          <textarea className="comment-textarea" value={text} onChange={handleChange} placeholder="Leave a comment..." name="comments" />
+          <button className="is-pulled-right">Add Comment</button>
         </form>
         :
         <div>loading comments...</div>}

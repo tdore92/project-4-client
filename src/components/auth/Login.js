@@ -29,7 +29,7 @@ function Login() {
 
   return (
     <section className="section">
-      <div className="container box">
+      <div className="container">
         <div className="columns">
           <form className="column is-half is-offset-one-quarter" onSubmit={handleSubmit}>
             <div className="field">

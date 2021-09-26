@@ -10,6 +10,7 @@ import MiscShow from './components/miscs/MiscShow'
 import Login from './components/auth/Login'
 import Basket from './components/common/Basket'
 import DinoNew from './components/dinosaurs/DinoNew'
+import QA from './components/common/QA'
 function App() {
   //React.useEffect(() => {
   //const getData = async () => {
@@ -25,8 +26,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/dinosaurs/new" component={DinoNew} />  
-        
+        <Route path="/dinosaurs/new" component={DinoNew} />          
         <Route path="/dinosaurs/:id" component={DinoShow} />
         <Route path="/items/:id" component={MiscShow} />
         <Route path="/dinosaurs" component={DinoIndex} />             
@@ -34,6 +34,7 @@ function App() {
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
         <Route path="/Basket" component={Basket} />
+        <Route path="/QA" component={QA}/>
         
       </Switch>
     </BrowserRouter>

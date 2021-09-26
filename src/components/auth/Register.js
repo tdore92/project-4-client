@@ -29,17 +29,15 @@ function Register() {
   }
 
   return (
-    <section className="section">
+    <div className="section">
       <section className="section">
-        <div className="container">
-          <div className="columns">
-            <p className="column is-full has-text-centered">Create an account with Dinosaur PetShop&copy; to access the exclusive ability to post ads for any dinosaurs or related items you wish to sell!</p>
-          </div>
+        <div>
+          <p className="has-text-centered">Create an account with Dinosaur PetShop&copy; to access the exclusive ability to post ads for any dinosaurs or related items you wish to sell!</p>
         </div>
       </section>
-      <div className="container box">
+      <div className="container">
         <div className="columns">
-          <form className="column is-half is-offset-one-quarter" onSubmit={handleSubmit}>
+          <form className="column is-offset-one-quarter" onSubmit={handleSubmit}>
             <div className="field">
               <label className="label">Username</label>
               <div className="control">
@@ -52,7 +50,6 @@ function Register() {
               {formErrors.username && <p className='help is-danger'>Username is required!</p>}
             </div>
             <div className="field">
-
               <label className="label">Email</label>
               <div className="control">
                 <input
@@ -61,59 +58,59 @@ function Register() {
                   name="email"
                   value={formdata.email} />
               </div>
-              {formErrors.email && <p className= 'help is-danger'>Email is required!</p>}
-              <div className="field">
-                <label className="label">Password</label>
-                <div className="control">
-                  <input
-                    placeholder="Password"
-                    onChange={handleChange}
-                    name="password"
-                    type="password"
-                    value={formdata.password} />
-                </div>
-                {formErrors.password && <p className='help is-danger'>Password is too short!</p>}
-                <div className="field">
-                  <label className="label">Password Confirmation</label>
-                  <div className="control">
-                    <input
-                      placeholder="Confirm your password"
-                      onChange={handleChange}
-                      name="passwordConfirmation"
-                      type="password"
-                      value={formdata.passwordConfirmation} />
-                  </div>
-                  {formErrors.passwordConfirmation && <p className='help is-danger'>Does not match password!</p>}
-
-                  <div className="field">
-                    <label className="label">Profile Image</label>
-                    <div className="control">
-                      <select className="control" placeholder="Is your product small, medium or large?" onChange={handleChange} name="profileImage" value={formdata.profileImage}>
-                        <option>T-Rex</option>
-                        <option>Triceratops</option>
-                        <option>Pteranodon</option>
-                      </select>
-                    </div>
-                    {formErrors.profileImage && <p className='help is-danger'>Select a profile image!</p>}
-                  </div>
-
-                  <div>
-                    <button type="submit">Register</button>
-                  </div>
-                </div>
+              {formErrors.email && <p className='help is-danger'>Email is required!</p>}
+            </div>
+            <div className="field">
+              <label className="label">Password</label>
+              <div className="control">
+                <input
+                  placeholder="Password"
+                  onChange={handleChange}
+                  name="password"
+                  type="password"
+                  value={formdata.password} />
               </div>
+              {formErrors.password && <p className='help is-danger'>Password is too short!</p>}
+            </div>
+            <div className="field">
+              <label className="label">Password Confirmation</label>
+              <div className="control">
+                <input
+                  placeholder="Confirm your password"
+                  onChange={handleChange}
+                  name="passwordConfirmation"
+                  type="password"
+                  value={formdata.passwordConfirmation} />
+              </div>
+              {formErrors.passwordConfirmation && <p className='help is-danger'>Does not match password!</p>}
+            </div>
+            <div className="field">
+              <label className="label">Profile Image</label>
+              <div className="control">
+                <select className="control" placeholder="Is your product small, medium or large?" onChange={handleChange} name="profileImage" value={formdata.profileImage}>
+                  <option>T-Rex</option>
+                  <option>Triceratops</option>
+                  <option>Pteranodon</option>
+                </select>
+              </div>
+              {formErrors.profileImage && <p className='help is-danger'>Select a profile image!</p>}
+            </div>
+            <div>
+              <button type="submit">Register</button>
             </div>
           </form>
-        </div>
-      </div>
-      <div className="container">
-        <div className="columns">
-          <div className="column is-half is-offset-one-quarter">
-            <p>Already have an account?<Link to="/Login"> Log In</Link></p>
+          <div className="column is-half">
+            <img src="https://i.imgur.com/ok6gYfY.png" alt="cartoon-dino" />
           </div>
         </div>
       </div>
-    </section>
+      <div className="section">
+        <div className="has-text-centered">
+          <p>Already have an account?<Link to="/Login"> Log In</Link></p>
+        </div>
+
+      </div>
+    </div>
   )
 
 }

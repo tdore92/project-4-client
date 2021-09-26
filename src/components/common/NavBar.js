@@ -25,6 +25,9 @@ function NavBar() {
               <Link to="/miscs" className="has-text-black">Food and Toys</Link>
             </div>
             <div className="navbar-item">
+              <Link to="/QA" className="has-text-black">Find A Dino</Link>
+            </div>
+            <div className="navbar-item">
               {!isLoggedIn ?
                 <>
                 </>
