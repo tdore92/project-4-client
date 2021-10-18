@@ -6,7 +6,7 @@
 
 <a href="">Visit Dinosaur Petshop here.</a>
 
-<a href="https://github.com/tdore92/project-4-server">Server Repository</a>
+<a href="https://github.com/tdore92/project-4-server-2">Server Repository</a>
 
 <h2>Brief</h2>
 
