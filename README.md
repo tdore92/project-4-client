@@ -157,11 +157,128 @@ class Misc(models.Model):
 
 <p>I then used Django Admin to quickly add some data sets.</p>
 
+<p><strong>Update:</strong> Whilst building the frontend I discovered having two separate models created more problems than it solved - particularly when it came to combining selected data sets in the 'basket' page. To fix this and streamline the backend functionality in general, I removed the existing user models and created a single 'items' model that combined classes from the 'dinosaur' and 'misc' models.</p>
+
+```
+class Item(models.Model):
+
+    name = models.CharField(max_length=50)
+
+    type = models.CharField(max_length=50)
+
+    diet = models.CharField(max_length=50)
+
+    size = models.CharField(max_length=50)
+
+    description = models.CharField(max_length=500)
+
+    price = models.FloatField(default=0)
+
+    image = models.CharField(max_length=250)
+
+    def __str__(self):
+        return f'{self.name}'
+
+```
+
+<p>The models that previously required a text_choices value were changed to hold a charField value, so CRUD-based forms were simpler to execute in the frontend.</p>
+
+<p>Once the items model was functional, I created an additional user model, login and register views, and token authentication.</p>
+
+```
+class User(AbstractUser):
+    email = models.CharField(max_length=50)
+    profile_image = models.CharField(max_length=250)
+```
+```
+User = get_user_model()
+
+class JWTAuthentication(BasicAuthentication):
+
+    def authenticate(self, request):
+        header = request.headers.get('Authorization')
+        if not header:
+            return None
+        if not header.startswith('Bearer'):
+            raise PermissionDenied({'detail': 'Invalid Authorization Header'})
+
+        token = header.replace('Bearer ', '')
+
+        try:
+            payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
+            user = User.objects.get(pk=payload.get('sub'))
+        except jwt.exceptions.InvalidTokenError:
+            raise PermissionDenied({'detail': 'Invalid Token'})
+        except User.DoesNotExist:
+            raise PermissionDenied({'detail': 'User Not Found'})
+
+        return (user, token)
+```
+```
+class LoginView(APIView):
+
+    def post(self, request):
+        email = request.data.get('email')
+        password = request.data.get('password')
+
+        try:
+            user_to_login = User.objects.get(email=email)
+        except User.DoesNotExist:
+            raise PermissionDenied({'detail': 'Unauthorized'})
+
+        if not user_to_login.check_password(password):
+            raise PermissionDenied({'detail': 'Unauthorized'})
+
+        expiry_time = datetime.now() + timedelta(days=7)
+        token = jwt.encode(
+            {'sub': user_to_login.id, 'exp': int(expiry_time.strftime('%s'))},
+            settings.SECRET_KEY,
+            algorithm='HS256'
+        )
+        return Response(
+            {'token': token, 'message': f'Welcome back {user_to_login.username}'}
+            )
+```
+
 <h3>Frontend</h3>
 
 <p>The index and show pages came together swiftly - on the home page, I opted for a simplistic, bulma-styled design.</p>
 
 <img src="https://i.imgur.com/6QsUY2I.png" alt="DPS Home"/>
+
+<p><strong>Update:</strong> Upon a successful login, the users navbar now changes to reveal a 'post your dinosaur' option, and replaces the 'login/register' options with a 'log out' variant.</p>
+
+```
+{!isLoggedIn ?
+                <>
+                </>
+                :
+                <>
+                  <Link to="/dinosaurs/new" className="has-text-black">Post Your Dinosaur</Link>
+                </>
+              }
+```
+```
+            {!isLoggedIn ?
+              <>
+                <div className="navbar-item">
+                  <Link to="/Register" className="has-text-black">Register</Link>
+                </div>
+                <div className="navbar-item">
+                  <Link to="/Login" className="has-text-black">Login</Link>
+                </div>
+
+              </>
+              :
+              <>
+
+                <div className="navbar-item">
+                  <p className="has-text-black" onClick={handleLogout}>Log Out</p>
+                </div>
+              </>
+
+            }
+```
 
 <p>The basket page followed the same idea that my colleague and I attempted in project 2 - take an item, push it into a new array and then map it out on the desired page. Here, I found setting state solved our previous issue, and the desired items would now be displayed in the basket.</p>
 
@@ -182,6 +299,8 @@ const [basketItems, setBasketItems] = React.useState(() => JSON.parse(window.loc
 ```
 
 <p>From here I added a ‘Total’ counter that displayed the combined items price, and a ‘Remove Item’ button that would affect the counter in return. I installed ‘Material-UI’ and used their button components to create a basic ‘checkout’ button.</p>
+
+<p><strong>Update:</strong> I later applied 'Material-UI' to the show page - when the 'add to basket' button is clicked, the user is notified of the said item being added, instead of being pushed to the home page.</p>
 
 ```
 const totalDinoPrice = basketItems.reduce((runningTotal, item) => {
@@ -212,11 +331,15 @@ const handleDelete = (e) => {
 
 <p>There being two arrays, two counters and remove buttons were made - the deadline on the horizon, I’ve opted to come back to the resulting bugs later on, either to spread and combine the two arrays or refactor my code entirely.</p>
 
-<img src="" alt="Pending Bug Fix"/>
+<p><strong>Update:</strong> The backend refactoring meant this process could now be simplified. Instead of handling two arrays, there is only one basket array to map and filter, thus only one handleDelete function needed.</p>
+
+<img src="https://i.imgur.com/ywp71ZZ.png" alt="Basket page"/>
 
 <h2>Wins</h2>
 
 <p>Basket: In project 2 my team and I tried to create a similar feature that we didn't quite figure out how to implement in time, so it felt quite satisfying to succeed in a solo venture this time around.</p>
+
+<p>Refactoring: The deadline having passed, I wasn't satisfied with the end result. It's felt very rewarding to come back to this project and refactor and refine certain elements, and I'm looking to tinker with it further.</p>
 
 <h2>Challenges</h2>
 
@@ -235,7 +358,7 @@ const handleDelete = (e) => {
 
 <h2>Lessons learned</h2>
 
-<li>Come the deadline, I had far more bugs than I would have liked. Many of them came from mistakes made in my planning, particularly my decision to use two models whereby one would have sufficed. The current solution would be to utilise a single model with expanded classes, which would reduce the problem solving required in the basket & related product apps especially. In short, Keep It Simple Stupid!</li>
+<li>Come the deadline, I had far more bugs than I would have liked. Many of them came from mistakes made in my planning, particularly my decision to use two models whereby one would have sufficed. The solution would be to utilise a single model with expanded classes, which would reduce the problem solving required in the basket & related product apps especially. In short, Keep It Simple Stupid!</li>
 <br/>
 <p><small>NOTE: This Readme will be updated over time as the bug fixes and outstanding features are implemented.</small></p>
 

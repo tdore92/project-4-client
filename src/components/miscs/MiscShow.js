@@ -49,37 +49,38 @@ function MiscShow() {
   return (
     <>
       {item ? (
-
-        <div className="columns is-centered">
-          <div className="column is-5 box">
-            <img src={item.image}></img>
-          </div>
-          <div className="column is-4">
-            <div>
-              <div><div className="is-size-3">{item.name}</div>{item.size} Sized {item.type}<div className="is-pulled-right">${item.price}</div></div>
-              <hr />
-              <p>{item.description}</p>
-              <button className="is-pulled-right" type="submit" value="id" onClick={handleClick}>Add Item to Basket</button>
-              <Dialog
-                open={open}
-                onClose={handleClose}>
-                <DialogTitle></DialogTitle>
-                <DialogContent>
-                  <DialogContentText>
-                    Item has been added to your basket.
-                  </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                  <Button onClick={handleClose}>
-                    Ok
-                  </Button>
-                </DialogActions>
-              </Dialog>
+        <div className="show-container">
+          <div className="columns is-centered">
+            <div className="column is-5">
+              <img  className="show-image" src={item.image}></img>
             </div>
-            <div className="comment-margin">
-              <div>Comments</div>
-              <div className="comments-section">
-                <Comments />
+            <div className="column is-4">
+              <div>
+                <div><div className="is-size-3">{item.name}</div>{item.size} Sized {item.type}<div className="is-pulled-right">${item.price}</div></div>
+                <hr />
+                <p>{item.description}</p>
+                <button className="is-pulled-right" type="submit" value="id" onClick={handleClick}>Add Item to Basket</button>
+                <Dialog
+                  open={open}
+                  onClose={handleClose}>
+                  <DialogTitle></DialogTitle>
+                  <DialogContent>
+                    <DialogContentText>
+                      Item has been added to your basket.
+                    </DialogContentText>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={handleClose}>
+                      Ok
+                    </Button>
+                  </DialogActions>
+                </Dialog>
+              </div>
+              <div className="comment-margin">
+                <div>Comments</div>
+                <div className="comments-section">
+                  <Comments />
+                </div>
               </div>
             </div>
           </div>
